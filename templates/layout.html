@@ -9,11 +9,11 @@
     <body>
         <header>
             <ul id="pcNav">
-                <li><a href="">ホーム</a></li>
-                <li><a href="">新規登録</a></li>
-                <li><a href="">ログイン</a></li>
-                <li><a href="">ログアウト</a></li>
-              </ul>
+                <li><a href="/">ホーム</a></li>
+                <li><a href="/signup">新規登録</a></li>
+                <li><a href="/login">ログイン</a></li>
+                <li><a href="/logout">ログアウト</a></li>
+            </ul>
             <input id="checkbox" type="checkbox">
             <label id="lineMenu" class="menu-check" for="checkbox">
               <span></span><span></span>
@@ -21,16 +21,17 @@
             </label>
             <nav id="globalNav">
               <ul>
-                <li><a href="">ホーム</a></li>
-                <li><a href="">新規登録</a></li>
-                <li><a href="">ログイン</a></li>
-                <li><a href="">ログアウト</a></li>
+                <li><a href="/">ホーム</a></li>
+                <li><a href="/signup">新規登録</a></li>
+                <li><a href="/login">ログイン</a></li>
+                <li><a href="logout">ログアウト</a></li>
               </ul>
             </nav>
-          </header>
-
-          <main>
+        </header>
+        <main>
+          <div id="mv">
             {% block main %}{% endblock %}
-          </main>
+          </div>
+        </main>
     </body>
 </html>
