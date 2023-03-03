@@ -30,7 +30,7 @@ def after_request(response):
 
 
 # Log user in
-@app.route("login", methods=["GET", "POST"])
+@app.route("/login", methods=["GET", "POST"])
 def login():
     # Forget any user_id
     session.clear()
