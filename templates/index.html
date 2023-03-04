@@ -7,9 +7,9 @@
 {% block main %}
     <label class="selectbox-005">
         <select>
-            <option>optionの例1</option>
-            <option>optionの例2</option>
-            <option>optionの例3</option>
+            {% for prefectures in rows %}
+                <option value="{{ prefectures.prefectures }}">{{ prefectures.prefectures }}</option>
+            {% endfor %}
         </select>
     </label>
 {% endblock %}
