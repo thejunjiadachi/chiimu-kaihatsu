@@ -5,11 +5,13 @@
 {% endblock %}
 
 {% block main %}
-    <label class="selectbox-005">
-        <select>
-            <option>optionの例1</option>
-            <option>optionの例2</option>
-            <option>optionの例3</option>
-        </select>
-    </label>
+    <form action="/" method="POST">
+        <label class="selectbox-005">
+            <select name="prefectures">
+                <option>optionの例1</option>
+                <option>optionの例2</option>
+                <option>optionの例3</option>
+            </select>
+        </label>
+    </form>
 {% endblock %}
