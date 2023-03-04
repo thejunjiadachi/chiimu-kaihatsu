@@ -42,22 +42,22 @@ def login():
 
         # Ensure username / password were submitted
         if not username:
-            flash("ユーザーネームを入力してください")
-            return render_template("login.html")
+            error_message = 'ユーザーネームを入力してください'
+            return render_template('login.html', error=error_message)
         elif not password:
-            flash("パスワードを入力してください")
-            return render_template("login.html")
+            error_message = 'ユーザーネームを入力してください'
+            return render_template('login.html', error=error_message)
 
         # Query database for username
         rows = db.execute("SELECT * FROM users WHERE username = ?", username)
 
         # Ensure username exists and password is correct
         if len(rows) != 1:
-            flash("存在しないユーザーネームです")
-            return render_template("login.html")
+            error_message = 'ユーザーネームを入力してください'
+            return render_template('login.html', error=error_message)
         elif not check_password_hash(rows[0]["password"], password):
-            flash("パスワードが一致しませんでした")
-            return render_template("login.html")
+            error_message = 'ユーザーネームを入力してください'
+            return render_template('login.html', error=error_message)
 
         # Remember who has logged in
         session["user_id"] = rows[0]["id"]
