@@ -5,11 +5,13 @@
 {% endblock %}
 
 {% block main %}
-    <label class="selectbox-005">
-        <select>
-            {% for prefectures in rows %}
-                <option value="{{ prefectures.prefectures }}">{{ prefectures.prefectures }}</option>
-            {% endfor %}
-        </select>
-    </label>
+    <form action="/" method="POST">
+        <label class="selectbox-005">
+            <select name="prefecture">
+                {% for prefectures in rows %}
+                    <option value="{{ prefectures.prefectures }}">{{ prefectures["prefecture"] }}</option>
+                {% endfor %}
+            </select>
+        </label>
+    </form>
 {% endblock %}
