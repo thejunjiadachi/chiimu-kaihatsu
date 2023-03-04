@@ -121,25 +121,20 @@ def register():
         return render_template("login.html")
 
 
-# Redirect user into top page
-@app.route("/")
-def top():
+# # Look up cafes which matched the conditions
+@app.route("/", methods=["GET", "POST"])
+def index():
+    # Ensure user reached route via GET
     if request.method == "GET":
+        # Query database for prefecture
         rows = db.execute("SELECT * FROM cafes")
 
         return render_template("index.html", rows=rows)
 
-
-# Look up cafes which matched the conditions
-@app.route("/lookup", methods=["GET", "POST"])
-def lookup():
-    # Ensure user reached route via POST
-    if request.method == "GET":
-        prefecture = request.args.get("prefecture")
+    else:
+        prefecture = request.form.get("prefecture")
 
         # Query database for prefecture
         rows = db.execute("SELECT * FROM cafes WHERE prefecture = ?", prefecture)
 
         return render_template("list.html", rows=rows)
-    else:
-        return redirect("/")

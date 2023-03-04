@@ -9,9 +9,11 @@
         <label class="selectbox-005">
             <select name="prefecture">
                 {% for prefectures in rows %}
-                    <option value="{{ prefectures.prefectures }}">{{ prefectures["prefecture"] }}</option>
+                    <option selected>選択してください</option>
+                    <option value="{{ prefectures["prefecture"] }}">{{ prefectures["prefecture"] }}</option>
                 {% endfor %}
             </select>
+            <button type="submit">検索</button>
         </label>
     </form>
 {% endblock %}
