@@ -61,12 +61,14 @@
 
             </div>
         <div class="context">
-            <select name="prefecture">
-                {% for prefectures in rows %}
-                    <option selected>選択してください</option>
-                    <option value="{{ prefectures["prefecture"] }}">{{ prefectures["prefecture"] }}</option>
-                {% endfor %}
-            </select>
+            <label>
+                <select name="prefecture">
+                    {% for prefectures in rows %}
+                        <option selected>選択してください</option>
+                        <option value="{{ prefectures["prefecture"] }}">{{ prefectures["prefecture"] }}</option>
+                    {% endfor %}
+                </select>
+            </label>
             <button type="submit" class="btn">
                 <a>検索</a>
             </button>
