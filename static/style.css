@@ -150,7 +150,7 @@
   }
 
   /*///// Selectbox style /////*/
-  label{
+  .box{
     box-shadow:0 3px 5px rgba(0,0,0,.2);
     padding:15px;
     background:white;
@@ -169,14 +169,14 @@
     appearance:none;
     cursor:pointer;
     font-size:16px;
-    color:#909090;
+    color:#333;
     border-radius:0;
     width:275px;
     z-index:2;
     background:transparent;
   }
 
-  label:after{
+  .box:after{
     content:"\25bc";
     font-size:16px;
     color:white;
