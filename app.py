@@ -80,8 +80,8 @@ def logout():
 
 
 # Register user
-@app.route("/register", methods=["GET", "POST"])
-def register():
+@app.route("/signup", methods=["GET", "POST"])
+def signup():
     # Ensure user reached route via POST
     if request.method == "POST":
         username = request.form.get("username")
@@ -127,7 +127,7 @@ def index():
     # Ensure user reached route via GET
     if request.method == "GET":
         # Query database for prefecture
-        rows = db.execute("SELECT * FROM cafes")
+        rows = db.execute("SELECT DISTINCT(prefecture) FROM cafes")
 
         return render_template("index.html", rows=rows)
 
@@ -138,3 +138,4 @@ def index():
         rows = db.execute("SELECT * FROM cafes WHERE prefecture = ?", prefecture)
 
         return render_template("list.html", rows=rows)
+
