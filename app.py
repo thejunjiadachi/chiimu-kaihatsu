@@ -42,10 +42,10 @@ def login():
 
         # Ensure username / password were submitted
         if not username:
-            error_message = 'ユーザーネームを入力してください'
+            error_message = "ユーザーネームを入力してください"
             return render_template('login.html', error=error_message)
         elif not password:
-            error_message = 'ユーザーネームを入力してください'
+            error_message = "パスワードを入力してください"
             return render_template('login.html', error=error_message)
 
         # Query database for username
@@ -53,10 +53,10 @@ def login():
 
         # Ensure username exists and password is correct
         if len(rows) != 1:
-            error_message = 'ユーザーネームを入力してください'
+            error_message = "存在しないユーザーネームです"
             return render_template('login.html', error=error_message)
         elif not check_password_hash(rows[0]["password"], password):
-            error_message = 'ユーザーネームを入力してください'
+            error_message = "パスワードが一致しませんでした"
             return render_template('login.html', error=error_message)
 
         # Remember who has logged in
@@ -80,8 +80,8 @@ def logout():
 
 
 # Register user
-@app.route("/register", methods=["GET", "POST"])
-def register():
+@app.route("/signup", methods=["GET", "POST"])
+def signup():
     # Ensure user reached route via POST
     if request.method == "POST":
         username = request.form.get("username")
@@ -90,22 +90,22 @@ def register():
 
         # Ensure username / password / confirmation were submitted
         if not username:
-            flash("ユーザーネームを入力してください")
-            return render_template("login.html")
+            error_message = "ユーザーネームを入力してください"
+            return render_template("login.html", error=error_message)
         elif not password or not confirmation:
-            flash("パスワードを入力してください")
-            return render_template("login.html")
+            error_message = "パスワードを入力してください"
+            return render_template("login.html", error=error_message)
 
         # Query database for username
         rows = db.execute("SELECT * FROM users WHERE username = ?", username)
 
         # Ensure username exists and password is correct
         if len(rows) != 0:
-            flash("既に存在しているユーザーネームです")
-            return render_template("login.html")
+            error_message = "既に存在しているユーザーネームです"
+            return render_template("login.html", error=error_message)
         elif password != confirmation:
-            flash("再入力したパスワードと一致していません")
-            return render_template("login.html")
+            error_message = "再入力したパスワードと一致していません"
+            return render_template("login.html", error=error_message)
 
         # Convert password into hashed one and Register user in database
         hash = generate_password_hash(password)
@@ -127,7 +127,7 @@ def index():
     # Ensure user reached route via GET
     if request.method == "GET":
         # Query database for prefecture
-        rows = db.execute("SELECT * FROM cafes")
+        rows = db.execute("SELECT DISTINCT(prefecture) FROM cafes")
 
         return render_template("index.html", rows=rows)
 
@@ -138,3 +138,4 @@ def index():
         rows = db.execute("SELECT * FROM cafes WHERE prefecture = ?", prefecture)
 
         return render_template("list.html", rows=rows)
+
