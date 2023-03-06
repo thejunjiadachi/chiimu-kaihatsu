@@ -5,8 +5,8 @@
 {% endblock %}
 
 {% block main %}
-    {% for prefectures in rows %}
-        <p>{{ prefectures["cafe_name"] }}</p>
-        <p>{{ prefectures["prefecture"] }}</p>
+    {% for row in rows %}
+        <p>{{ row["cafe_name"] }}</p>
+        <p>{{ row["prefecture"] }}</p>
     {% endfor %}
 {% endblock %}
