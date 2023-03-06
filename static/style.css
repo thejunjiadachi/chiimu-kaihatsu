@@ -126,7 +126,11 @@
     justify-content: center;
     align-items: center;
     height: 100vh; /* 要素を全画面に広げる */
+    padding-top: 200px;
   }
+
+  /*///// Btn_submit style /////*/
+
 
   /*///// Background style /////*/
   body {
