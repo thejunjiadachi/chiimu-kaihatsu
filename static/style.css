@@ -503,7 +503,11 @@
     box-shadow:1px 1px 4px rgba(0,0,0,0.2);
     transform: rotate(-4deg);
     }
-    .memox p{
+    .memox a {
+    text-decoration: none;
+    color: inherit;
+    }
+    .memox p {
     margin-bottom:0.5em;
     }
     .memox-image {

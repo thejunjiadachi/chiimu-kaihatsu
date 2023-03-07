@@ -7,7 +7,9 @@
 {% block main %}
     <div class="memox">
         {% for prefectures in rows %}
+        <a href="{{ prefectures['url'] }}">
             <p>{{ prefectures["cafe_name"] }}</p>
+        </a>
         {% endfor %}
         <div class="memox-image">
             <img src="./../static/images/logo1.png" alt="ロゴ">
