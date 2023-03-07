@@ -5,9 +5,12 @@
 {% endblock %}
 
 {% block main %}
-    <div class="memox huifont">
+    <div class="memox">
         {% for prefectures in rows %}
             <p>{{ prefectures["cafe_name"] }}</p>
         {% endfor %}
+        <div class="memox-image">
+            <img src="./../static/images/logo1.png" alt="ロゴ">
+        </div>
     </div>
 {% endblock %}

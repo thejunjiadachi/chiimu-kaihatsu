@@ -98,6 +98,7 @@
     height: 100vh;
     height: 100dvh;
     overflow-y: scroll;
+    z-index: 999;
   }
 
   /*///// Global Nav and Webpage style /////*/
@@ -472,8 +473,8 @@
   .memox{
     position:relative;
     background:#fffde7;
-    width:85%;
-    margin:2em auto;
+    width:65%;
+    margin:12em auto 2em auto;
     padding:1.5em 1em;
     transform: rotate(-2deg);
     box-shadow:1px 1px 4px rgba(0,0,0,0.2);
@@ -504,6 +505,16 @@
     }
     .memox p{
     margin-bottom:0.5em;
+    }
+    .memox-image {
+      position: absolute;
+      bottom: -150px;
+      right: -300px;
+      z-index: 10;
+    }
+    .memox-image img {
+      width: 90%;
+      height: auto;
     }
 
   @media screen and (min-width:920px) {
