@@ -138,4 +138,3 @@ def index():
         rows = db.execute("SELECT * FROM cafes WHERE prefecture = ?", prefecture)
 
         return render_template("list.html", rows=rows)
-
