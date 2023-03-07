@@ -59,14 +59,16 @@
             S20.866,331,46.607,331h668.787C741.133,331,762,307.942,762,279.5S741.133,228,715.394,228z"/>
             </svg>
 
-            </div>
+        </div>
         <div class="context">
-            <select name="prefecture">
-                <option selected>選択してください</option>
-                {% for prefectures in rows %}
-                    <option value="{{ prefectures["prefecture"] }}">{{ prefectures["prefecture"] }}</option>
-                {% endfor %}
-            </select>
+            <div class="box">
+                <select name="prefecture">
+                    <option selected>選択してください</option>
+                        {% for prefectures in rows %}
+                                <option value="{{ prefectures["prefecture"] }}">{{ prefectures["prefecture"] }}</option>
+                        {% endfor %}
+                </select>
+            </div>
             <button type="submit" class="btn">
                 <a>検索</a>
             </button>
