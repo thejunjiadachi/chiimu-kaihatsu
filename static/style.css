@@ -468,6 +468,43 @@
     text-align: center;
   }
 
+  .memox{
+    position:relative;
+    background:#fffde7;
+    width:85%;
+    margin:2em auto;
+    padding:1.5em 1em;
+    transform: rotate(-2deg);
+    box-shadow:1px 1px 4px rgba(0,0,0,0.2);
+    color:#795548;
+    }
+    .memox::before{
+    content:'ここがおすすめ';
+    position:relative;
+    display:inline-block;
+    border-bottom:3px solid #795548;
+    border-radius: 0 0 40% 5% / 0 0 15% 20%;
+    padding:0 1em 0.1em 0.2em;
+    font-size:110%;
+    font-weight:bold;
+    transform: rotate(-5deg);
+    }
+    .memox::after{
+    content:'';
+    position:absolute;
+    left:50%;
+    top:-15px;
+    margin-left:-75px;
+    width:150px;
+    height:30px;
+    background:rgba(245,245,245,0.7);
+    box-shadow:1px 1px 4px rgba(0,0,0,0.2);
+    transform: rotate(-4deg);
+    }
+    .memox p{
+    margin-bottom:0.5em;
+    }
+
   @media screen and (min-width:920px) {
 
     #pcNav {
