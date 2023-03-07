@@ -5,10 +5,10 @@
 {% endblock %}
 
 {% block main %}
-    {% if error %}
-    <div class="error-message">{{ error }}</div>
-    {% endif %}
     <form action="/login" method="post">
+        {% if error %}
+            <div class="error-message">{{ error }}</div>
+        {% endif %}
         <div class="mb-3">
             <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="username" name="username" placeholder="Username" type="text">
         </div>

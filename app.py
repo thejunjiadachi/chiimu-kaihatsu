@@ -91,10 +91,10 @@ def signup():
         # Ensure username / password / confirmation were submitted
         if not username:
             error_message = "ユーザーネームを入力してください"
-            return render_template("login.html", error=error_message)
+            return render_template("register.html", error=error_message)
         elif not password or not confirmation:
             error_message = "パスワードを入力してください"
-            return render_template("login.html", error=error_message)
+            return render_template("register.html", error=error_message)
 
         # Query database for username
         rows = db.execute("SELECT * FROM users WHERE username = ?", username)
@@ -102,10 +102,10 @@ def signup():
         # Ensure username exists and password is correct
         if len(rows) != 0:
             error_message = "既に存在しているユーザーネームです"
-            return render_template("login.html", error=error_message)
+            return render_template("register.html", error=error_message)
         elif password != confirmation:
             error_message = "再入力したパスワードと一致していません"
-            return render_template("login.html", error=error_message)
+            return render_template("register.html", error=error_message)
 
         # Convert password into hashed one and Register user in database
         hash = generate_password_hash(password)
@@ -118,7 +118,7 @@ def signup():
         return redirect("/")
 
     else:
-        return render_template("login.html")
+        return render_template("register.html")
 
 
 # # Look up cafes which matched the conditions
