@@ -4,7 +4,6 @@
     一覧
 {% endblock %}
 
-
 {% block main %}
 <div class="memox">
 {% for prefectures in rows %}
@@ -17,9 +16,11 @@
             </a>
         </td>
         <td>
-
+            <i class="fa-sharp fa-solid fa-wifi"></i>
             {% if prefectures["is_wifi"] %}あり{% else %}なし{% endif %}
+            <i class="fa-sharp fa-solid fa-plug"></i>
             {% if prefectures["is_outlet"] %}あり{% else %}なし{% endif %}
+            <i class="fa-sharp fa-solid fa-square-parking"></i>
             {% if prefectures["is_parking"] %}あり{% else %}なし{% endif %}
         </td>
     </tr>
