@@ -544,3 +544,14 @@
     }
 
   }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td {
+    width: 25%;
+    padding: 10px;
+    text-align: left;
+  }

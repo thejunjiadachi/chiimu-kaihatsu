@@ -4,15 +4,36 @@
     一覧
 {% endblock %}
 
+{% block head %}
+<link rel="stylesheet" href="https://kit.fontawesome.com/5344205e39.css" crossorigin="anonymous">
+
+{% endblock %}
+
 {% block main %}
-    <div class="memox">
-        {% for prefectures in rows %}
-        <a href="{{ prefectures['url'] }}">
+<div class="memox">
+{% for prefectures in rows %}
+
+<table border="1">
+    <tr>
+        <td>
+            <a href="{{ prefectures['url'] }}">
             <p>{{ prefectures["cafe_name"] }}</p>
-        </a>
-        {% endfor %}
-        <div class="memox-image">
-            <img src="./../static/images/logo1.png" alt="ロゴ">
-        </div>
+            </a>
+        </td>
+        <td>
+            {% if prefectures["is_wifi"] %}
+                W <i class="fa-solid fa-wifi">あり</i>
+            {% else %}
+                なし
+            {% endif %}
+            コ {% if prefectures["is_outlet"] %}あり{% else %}なし{% endif %}
+            駐 {% if prefectures["is_parking"] %}あり{% else %}なし{% endif %}
+        </td>
+    </tr>
+</table>
+{% endfor %}
+<div class="memox-image">
+    <img src="./../static/images/logo1.png" alt="ロゴ">
     </div>
+</div>
 {% endblock %}
