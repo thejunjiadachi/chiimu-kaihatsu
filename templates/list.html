@@ -4,16 +4,12 @@
     一覧
 {% endblock %}
 
-{% block head %}
-<link rel="stylesheet" href="https://kit.fontawesome.com/5344205e39.css" crossorigin="anonymous">
-
-{% endblock %}
 
 {% block main %}
 <div class="memox">
 {% for prefectures in rows %}
 
-<table border="1">
+<table>
     <tr>
         <td>
             <a href="{{ prefectures['url'] }}">
@@ -21,13 +17,10 @@
             </a>
         </td>
         <td>
-            {% if prefectures["is_wifi"] %}
-                W <i class="fa-solid fa-wifi">あり</i>
-            {% else %}
-                なし
-            {% endif %}
-            コ {% if prefectures["is_outlet"] %}あり{% else %}なし{% endif %}
-            駐 {% if prefectures["is_parking"] %}あり{% else %}なし{% endif %}
+
+            {% if prefectures["is_wifi"] %}あり{% else %}なし{% endif %}
+            {% if prefectures["is_outlet"] %}あり{% else %}なし{% endif %}
+            {% if prefectures["is_parking"] %}あり{% else %}なし{% endif %}
         </td>
     </tr>
 </table>
