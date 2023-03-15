@@ -138,3 +138,32 @@ def index():
         rows = db.execute("SELECT * FROM cafes WHERE prefecture = ?", prefecture)
 
         return render_template("list.html", rows=rows)
+
+
+@app.route("/<int:id>", methods=["GET", "POST"])
+@login_required
+def add_bookmark(id):
+    # Ensure user reached route via POST
+    if request.method == "POST":
+        user_id = session["user_id"]
+
+        # Query database for bookmarked hotel
+        cafe_id = db.execute("SELECT cafe_id FROM bookmarks WHERE cafe_id = ?", id)
+
+        # Ensure hotel was bookmarked
+        if len(cafe_id) == 0:
+            # Insert bookmark into database
+            db.execute("INSERT INTO bookmarks (user_id, cafe_id) VALUES (?, ?)", user_id, id)
+
+        else:
+            # Update database for updated_at
+            db.execute("UPDATE bookmarks SET updated_at = DATETIME('now', 'localtime') WHERE user_id = ? AND cafe_id = ?", user_id, id)
+
+        # Query database for hotel data
+        prefecture = db.execute("SELECT prefecture FROM cafes WHERE id = ?", id)
+        rows = db.execute("SELECT * FROM cafes WHERE prefecture = ?", prefecture[0]["prefecture"])
+
+        return render_template("list.html", rows=rows)
+
+    else:
+        return redirect("/")
