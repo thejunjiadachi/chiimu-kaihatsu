@@ -16,7 +16,26 @@
         <div class="mb-3">
             <input class="form-control mx-auto w-auto" id="password" name="password" placeholder="Password" type="password">
             <i class="fa-solid fa-lock"></i>
+            <span class="field-icon">
+                <i toggle="#password-field" class="mdi mdi-eye toggle-password"></i>
+            </span>
         </div>
         <button class="btn btn-primary" type="submit">Log In</button>
     </form>
+    <script>
+        // パスワードの表示・非表示切替
+        $(".toggle-password").click(function() {
+            // iconの切り替え
+            $(this).toggleClass("mdi-eye mdi-eye-off");
+
+            // 入力フォームの取得
+            var input = $(this).parent().prev("input");
+            // type切替
+            if (input.attr("type") == "password") {
+            input.attr("type", "text");
+            } else {
+            input.attr("type", "password");
+            }
+        });
+    </script>
 {% endblock %}
