@@ -453,7 +453,7 @@ svg {
 }
 
 /* フォーム要素全体 */
-form {
+.info {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -461,7 +461,7 @@ form {
     height: 100vh;
 }
 
-form .mb-3 {
+.info .mb-3 {
   width: 100%;
   max-width: 400px;
 }
