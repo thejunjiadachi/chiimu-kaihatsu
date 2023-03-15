@@ -1,22 +1,13 @@
-<<<<<<< HEAD
-  /*///// Header Style /////*/
-  header {
-=======
+/*///// Header Style /////*/
 header {
->>>>>>> 4a89d2d0a222fae265b31c9634449a32f067e010
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 4.2rem;
     background-color: #fff;
-<<<<<<< HEAD
     border-bottom: 3px #999;
   }
-=======
-    border-bottom: 3px solid #999;
-}
->>>>>>> 4a89d2d0a222fae265b31c9634449a32f067e010
 
 #pcNav {
     display: none;
@@ -29,13 +20,8 @@ header {
     height: 0;
 }
 
-<<<<<<< HEAD
-  /*///// ハンバーガーメニュー /////*/
-  #lineMenu {
-=======
-/*///// lineMenu /////*/
+/*///// ハンバーガーメニュー /////*/
 #lineMenu {
->>>>>>> 4a89d2d0a222fae265b31c9634449a32f067e010
     position: fixed;
     top: 1.5rem;
     right: 5rem;
@@ -106,26 +92,17 @@ header {
     opacity: 1;
 }
 
-<<<<<<< HEAD
-  #checkbox:checked ~ #globalNav + main {
+#checkbox:checked ~ #globalNav + main {
     display: none;
-  }
+}
 
-  #globalNav ul {
-=======
 #globalNav ul {
->>>>>>> 4a89d2d0a222fae265b31c9634449a32f067e010
     list-style: none;
     padding: 80px 4%;
     height: 100vh;
     height: 100dvh;
     overflow-y: scroll;
-<<<<<<< HEAD
   }
-=======
-    z-index: 999;
-}
->>>>>>> 4a89d2d0a222fae265b31c9634449a32f067e010
 
 /*///// Global Nav and Webpage style /////*/
 #globalNav li {
