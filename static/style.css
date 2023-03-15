@@ -456,8 +456,14 @@ svg {
 form {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin-top: 50px;
+    height: 100vh;
+}
+
+form .mb-3 {
+  width: 100%;
+  max-width: 400px;
 }
 
   /* ユーザー名とパスワードの入力欄 */
