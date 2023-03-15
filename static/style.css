@@ -557,7 +557,7 @@ svg {
 .memox-image {
     position: absolute;
     bottom: -150px;
-    right: -300px;
+    right: -350px;
     z-index: 10;
 }
 
