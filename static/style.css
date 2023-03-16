@@ -7,13 +7,13 @@ header {
     height: 4.2rem;
     background-color: #fff;
     border-bottom: 3px #999;
-  }
+}
 
 #pcNav {
     display: none;
 }
 
-/*///// Hide Checkbox /////*/
+/*///// Hide Checkbox(ハンバーガーメニューの) /////*/
 #checkbox {
     opacity: 0;
     width: 0;
@@ -72,7 +72,7 @@ header {
     transform: translateY(-6px) rotate(20deg);
 }
 
-/*///// Global Nav /////*/
+/*///// Global Nav Style /////*/
 #globalNav {
     position: fixed;
     top: 0;
@@ -90,19 +90,14 @@ header {
     opacity: 1;
 }
 
-#checkbox:checked ~ #globalNav + main {
-    display: none;
-}
-
 #globalNav ul {
     list-style: none;
     padding: 80px 4%;
     height: 100vh;
-    height: 100dvh;
     overflow-y: scroll;
   }
 
-/*///// Global Nav and Webpage style /////*/
+/*///// Global Nav and Menu style /////*/
 #globalNav li {
     margin: 0 auto 0.3rem;
     max-width: 800px;
@@ -123,6 +118,7 @@ header {
     padding-left: 2.5rem;
 }
 
+/*/////  要素を中央に配置 /////*/
 .context {
     display: flex;
     justify-content: center;
@@ -234,23 +230,21 @@ svg {
     display: block;
 }
 
-/**
-  * Paper Plane
-  */
-/*Paper Plane: Container*/
+/*///// Paper Plane /////*/
+/*///// Paper Plane: Container /////*/
 .plane-container {
     width: 200px;
     margin: 0px auto;
     z-index: 3;
 }
 
-/*Paper Plane: Image*/
+/*///// Paper Plane: Image /////*/
 .plane {
     width: 100%;
     height: 60px;
 }
 
-/*Paper Plane: Animation*/
+/*///// Paper Plane: Animation /////*/
 .plane-container {
     -webkit-animation: paper-plane-scoping 2s alternate infinite;
     -moz-animation: paper-plane-scoping 2s alternate infinite;
@@ -323,9 +317,7 @@ svg {
     }
 }
 
-/**
-  * Clouds
-  */
+/*///// Clouds /////*/
 .clouds {
     position: absolute;
     top: 0;
@@ -356,7 +348,7 @@ svg {
     z-index: 1;
 }
 
-/*Cloud Sizing*/
+/*///// Cloud Sizing /////*/
 .cloud.smaller {
     margin-right: 400px;
     width: 100px;
@@ -381,7 +373,7 @@ svg {
 }
 
 
-/*Cloud: Animation*/
+/*///// Cloud: Animation /////*/
 .cloud {
     -webkit-animation-name: cloud-movement;
     -webkit-animation-timing-function: linear;
@@ -450,7 +442,7 @@ svg {
     }
 }
 
-/* フォーム要素全体 */
+/*///// フォーム要素全体 /////*/
 .info {
     display: flex;
     flex-direction: column;
@@ -464,9 +456,9 @@ svg {
   max-width: 400px;
 }
 
-  /* ユーザー名とパスワードの入力欄 */
-  input[type="text"],
-  input[type="password"] {
+/*///// ユーザー名とパスワードの入力欄 /////*/
+input[type="text"],
+input[type="password"] {
     padding: 10px 10px 10px calc(2rem + 10px);
     border-radius: 5px;
     border: none;
@@ -477,24 +469,24 @@ svg {
     max-width: 100%;
 }
 
-  .form-control+i {
+.form-control+i {
     position: absolute;
     top: 50%;
     left: 10px;
     transform: translateY(-50%);
     transition: .3s;
-  }
+}
 
-  .form-control:focus {
+.form-control:focus {
       border: 1px solid #4ab6f6;
       box-shadow: 0 0 3px #4ab6f6;
-  }
+}
 
-  .form-control:focus+i {
+.form-control:focus+i {
       color: #ffb900;
-  }
+}
 
-/* エラーメッセージ */
+/*///// エラーメッセージ /////*/
 .error-message {
     margin: 10px;
     padding: 10px;
@@ -505,7 +497,7 @@ svg {
     text-align: center;
 }
 
-/*///// List.html style /////*/
+/*///// List.html(検索結果後の) style /////*/
 .memox {
     position: relative;
     background: #fffde7;
@@ -552,6 +544,7 @@ svg {
     margin: 1em 0 1em 0;
 }
 
+/*///// list.html image Style /////*/
 .memox-image {
     position: absolute;
     bottom: -150px;
@@ -564,28 +557,7 @@ svg {
     height: auto;
 }
 
-@media screen and (min-width:920px) {
-    #pcNav {
-        list-style: none;
-        position: fixed;
-        top: 1.2rem;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        gap: 3rem;
-    }
-
-    #pcNav a {
-        text-decoration: none;
-        color: #333;
-        transition: all 0.5s;
-    }
-
-    #pcNav a:hover {
-        color: #f00;
-    }
-}
-
+/*///// お気に入り登録 Style /////*/
 table {
     border-collapse: collapse;
     width: 100%;
@@ -620,4 +592,29 @@ td {
 .bookmark .bookmark-image {
     height: 30px;
     width: 30px;
+}
+
+
+/*/////  css追加する場合は、こちらよりも上側に書いてください /////*/
+/*/////  レスポンシブ対応 /////*/
+@media screen and (min-width:920px) {
+    #pcNav {
+        list-style: none;
+        position: fixed;
+        top: 1.2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 3rem;
+    }
+
+    #pcNav a {
+        text-decoration: none;
+        color: #333;
+        transition: all 0.5s;
+    }
+
+    #pcNav a:hover {
+        color: #f00;
+    }
 }
