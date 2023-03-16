@@ -78,9 +78,7 @@ header {
     top: 0;
     left: 0;
     width: 100vw;
-    width: 100dvw;
     height: 100vh;
-    height: 100dvh;
     background-color: rgb(255, 185, 0, .9);
     visibility: hidden;
     opacity: 0;
