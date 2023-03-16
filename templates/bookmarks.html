@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    一覧
+{% endblock %}
+
+{% block main %}
+    <div class="memox">
+
+    <table>
+        {% for prefectures in rows %}
+        <tr>
+            <td class="bookmark">
+                <form action="/{{ prefectures['id'] }}" method="post">
+                    <button type="submit">
+                        <img src="/static/images/bookmark.png" class="bookmark-image">
+                    </button>
+                </form>
+            </td>
+            <td>
+                <a href="{{ prefectures['url'] }}" target="_blank">
+                    <p>{{ prefectures["cafe_name"] }}</p>
+                </a>
+            </td>
+            <td>
+                <i class="fa-sharp fa-solid fa-wifi"></i>
+                {% if prefectures["is_wifi"] %}あり{% else %}なし{% endif %}
+                <i class="fa-sharp fa-solid fa-plug"></i>
+                {% if prefectures["is_outlet"] %}あり{% else %}なし{% endif %}
+                <i class="fa-sharp fa-solid fa-square-parking"></i>
+                {% if prefectures["is_parking"] %}あり{% else %}なし{% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div class="memox-image">
+        <img src="./../static/images/logo1.png" alt="ロゴ">
+        </div>
+    </div>
+{% endblock %}

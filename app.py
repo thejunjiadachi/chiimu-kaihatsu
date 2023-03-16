@@ -167,3 +167,13 @@ def add_bookmark(id):
 
     else:
         return redirect("/")
+
+# # Look up cafes which is in favorites
+@app.route("/bookmarks")
+@login_required
+def bookmarks():
+    # Ensure user reached route via GET
+    user_id = session["user_id"]
+    # Query database for prefecture
+    rows = db.execute("SELECT cafes.cafe_name FROM bookmarks JOIN cafes ON bookmarks.cafe_id = cafes.id WHERE bookmarks.user_id = ?", user_id)
+    return render_template("bookmarks.html", rows=rows)
