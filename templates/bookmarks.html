@@ -10,6 +10,13 @@
         <table>
             {% for prefectures in rows %}
             <tr>
+                <td class="bookmark">
+                    <form action="/bookmarks" method="post">
+                        <input type="hidden" name="delete_cafe_id" value="{{ prefectures['id'] }}">
+                        <button type="submit"><p>x</p></button>
+                    </form>
+                </td>
+
                 <td>
                     <a href="{{ prefectures['url'] }}" target="_blank">
                         <p>{{ prefectures["cafe_name"] }}</p>
