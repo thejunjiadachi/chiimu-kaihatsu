@@ -175,5 +175,5 @@ def bookmarks():
     # Ensure user reached route via GET
     user_id = session["user_id"]
     # Query database for prefecture
-    rows = db.execute("SELECT cafes.cafe_name FROM bookmarks JOIN cafes ON bookmarks.cafe_id = cafes.id WHERE bookmarks.user_id = ?", user_id)
+    rows = db.execute("SELECT cafes.cafe_name, cafes.url FROM bookmarks JOIN cafes ON bookmarks.cafe_id = cafes.id WHERE bookmarks.user_id = ?", user_id)
     return render_template("bookmarks.html", rows=rows)
