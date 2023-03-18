@@ -66,7 +66,7 @@ def login():
         return redirect("/")
 
     else:
-        return render_template("login.html")
+        return render_template("login.html", username="ゲスト")
 
 
 # Log user out
@@ -91,10 +91,10 @@ def signup():
         # Ensure username / password / confirmation were submitted
         if not username:
             error_message = "ユーザーネームを入力してください"
-            return render_template("register.html", error=error_message)
+            return render_template("register.html", error=error_message, username="ゲスト")
         elif not password or not confirmation:
             error_message = "パスワードを入力してください"
-            return render_template("register.html", error=error_message)
+            return render_template("register.html", error=error_message, username="ゲスト")
 
         # Query database for username
         rows = db.execute("SELECT * FROM users WHERE username = ?", username)
@@ -102,10 +102,10 @@ def signup():
         # Ensure username exists and password is correct
         if len(rows) != 0:
             error_message = "既に存在しているユーザーネームです"
-            return render_template("register.html", error=error_message)
+            return render_template("register.html", error=error_message, username="ゲスト")
         elif password != confirmation:
             error_message = "再入力したパスワードと一致していません"
-            return render_template("register.html", error=error_message)
+            return render_template("register.html", error=error_message, username="ゲスト")
 
         # Convert password into hashed one and Register user in database
         hash = generate_password_hash(password)
@@ -118,18 +118,25 @@ def signup():
         return redirect("/")
 
     else:
-        return render_template("register.html")
+        return render_template("register.html", username="ゲスト")
 
 
 # # Look up cafes which matched the conditions
 @app.route("/", methods=["GET", "POST"])
 def index():
+
     # Ensure user reached route via GET
     if request.method == "GET":
         # Query database for prefecture
         rows = db.execute("SELECT DISTINCT(prefecture) FROM cafes")
 
-        return render_template("index.html", rows=rows)
+        # usernameの表示
+        if "user_id" in session:
+            user_id = session["user_id"]
+            username = db.execute("SELECT username FROM users WHERE id = ?", user_id)[0]["username"]
+            return render_template("index.html", rows=rows, username=username)
+        else:
+            return render_template("index.html", rows=rows, username="ゲスト")
 
     else:
         prefecture = request.form.get("prefecture")
@@ -137,7 +144,13 @@ def index():
         # Query database for prefecture
         rows = db.execute("SELECT * FROM cafes WHERE prefecture = ?", prefecture)
 
-        return render_template("list.html", rows=rows)
+        # usernameの表示
+        if "user_id" in session:
+            user_id = session["user_id"]
+            username = db.execute("SELECT username FROM users WHERE id = ?", user_id)[0]["username"]
+            return render_template("list.html", rows=rows, username=username)
+        else:
+            return render_template("list.html", rows=rows, username="ゲスト")
 
 
 @app.route("/<int:id>", methods=["GET", "POST"])
@@ -163,7 +176,12 @@ def add_bookmark(id):
         prefecture = db.execute("SELECT prefecture FROM cafes WHERE id = ?", id)
         rows = db.execute("SELECT * FROM cafes WHERE prefecture = ?", prefecture[0]["prefecture"])
 
-        return render_template("list.html", rows=rows)
+            # usernameの表示
+        if "user_id" in session:
+            user_id = session["user_id"]
+            username = db.execute("SELECT username FROM users WHERE id = ?", user_id)[0]["username"]
+
+            return render_template("list.html", rows=rows, username=username)
 
     else:
         return redirect("/")
@@ -180,4 +198,10 @@ def bookmarks():
         db.execute("DELETE FROM bookmarks WHERE user_id = ? AND cafe_id = ?", user_id, cafe_id)
     # Query database for prefecture
     rows = db.execute("SELECT cafes.id, cafes.cafe_name, cafes.url, cafes.is_wifi, cafes.is_outlet, cafes.is_parking FROM bookmarks JOIN cafes ON bookmarks.cafe_id = cafes.id WHERE bookmarks.user_id = ?", user_id)
-    return render_template("bookmarks.html", rows=rows)
+
+    # usernameの表示
+    if "user_id" in session:
+        user_id = session["user_id"]
+        username = db.execute("SELECT username FROM users WHERE id = ?", user_id)[0]["username"]
+        return render_template("bookmarks.html", rows=rows, username=username)
+
